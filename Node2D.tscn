@@ -1,3 +1,9 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Godot/Game/Game-2022-Year13/TileCraftGroundSetVersion2.png" type="Texture" id=1]
 
 [node name="Node2D" type="Node2D"]
+
+[node name="TileCraftGroundSetVersion2" type="Sprite" parent="."]
+position = Vector2( 593, 267 )
+texture = ExtResource( 1 )
