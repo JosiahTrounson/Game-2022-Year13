@@ -15,3 +15,6 @@ func _ready():
 	$AnimationPlayer.play("Straight")
 	pass 
 
+func update_animation(anim):
+	$AnimationPlayer.play(anim)
+	
