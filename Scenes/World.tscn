@@ -8,6 +8,8 @@
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 452, 263 )
+speed = null
+acceleration = null
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 

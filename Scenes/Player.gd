@@ -1,12 +1,12 @@
 extends KinematicBody2D
 
-export (int) var speed = 120
+export (int) var speed = 240
 
 var velocity = Vector2.ZERO
 
-export (float) var acceleration = 25
+export (float) var acceleration = 75
 
-enum state {IDLE, STRAIGHT, EXPLOSION, LEFT, RIGHT}
+enum state {IDLE, STRAIGHT, BACKWARDS, EXPLOSION, LEFT, RIGHT}
 
 onready var player_state = state.STRAIGHT
 
@@ -24,8 +24,10 @@ func update_animation(anim):
 		state.EXPLOSION:
 			$AnimationPlayer.play("Explosion")
 	
-func handle_state(state):
-	print(state)
+func handle_state(player_state):
+	match(player_state):
+		state.STRAIGHT:
+			velocity.y = move_toward(velocity.y, 0, acceleration)
 	pass
 	
 func get_input():
@@ -34,6 +36,11 @@ func get_input():
 		velocity.x = move_toward(velocity.x, dir*speed, acceleration)
 	else:
 		velocity.x = move_toward(velocity.x, 0,acceleration)
+	var dir = Input.get_action_strength("up") - Input.get_action_strength("down")
+	if dir != 0:
+		velocity.y = move_toward(velocity.y, dir*speed, acceleration)
+	else:
+		velocity.y = move_toward(velocity.y, 0,acceleration)
 		
 func _physics_process(delta):
 	get_input()
@@ -45,6 +52,11 @@ func _physics_process(delta):
 		player_state = state.RIGHT
 	elif velocity.x != 0:
 		player_state = state.LEFT
+	elif velocity.y != 0:
+		player_state = state.STRAIGHT
+	elif velocity.y != 0:
+		player_state = state.BACKWARDS
+	
 		
 	handle_state(player_state)
 	update_animation(player_state)	
