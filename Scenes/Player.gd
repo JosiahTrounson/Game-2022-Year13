@@ -10,52 +10,66 @@ enum state {IDLE, STRAIGHT, BACKWARDS, EXPLOSION, LEFT, RIGHT}
 
 onready var player_state = state.STRAIGHT
 
+onready var anim_tree = $AnimationTree.get("parameters/playback")
 
 func _ready():
-	$AnimationPlayer.play("Straight")
+	anim_tree.travel("Straight")
 	pass 
 
 func update_animation(anim):
-	match anim:
+	match(anim):
 		state.STRAIGHT:
-			$AnimationPlayer.play("Straight")
+			anim_tree.travel("Straight")
 		state.BACKWARDS:
-			$AnimationPlayer.play("Backwards")
+			anim_tree.travel("Backwards")
 		state.RIGHT:
-			$AnimationPlayer.play("Right")
+			anim_tree.travel("Right")
 		state.LEFT:
-			$AnimationPlayer.play("Left")
+			anim_tree.travel("Left")
 		state.EXPLOSION:
-			$AnimationPlayer.play("Explosion")
+			anim_tree.travel("Explosion")
 	
-func handle_state(player_state):
-	match(player_state):
-		state.STRAIGHT:
-			velocity.y = move_toward(velocity.y, 0, acceleration)
-	pass
+
 	
 func get_input():
 	velocity = Vector2.ZERO
+	player_state = state.STRAIGHT
 	if Input.is_action_pressed('right'):
 		velocity.x += 1
+		player_state = state.RIGHT
 	if Input.is_action_pressed('left'):
 		velocity.x -= 1
+		player_state = state.LEFT
 	if Input.is_action_pressed('down'):
 		velocity.y += 1
+		player_state = state.BACKWARDS
 	if Input.is_action_pressed('up'):
 		velocity.y -= 1
+		player_state = state.STRAIGHT
+	if Input.is_action_pressed('right'):
+		velocity.y -= 1
+		velocity.x += 1
+		player_state = state.RIGHT
+	if Input.is_action_pressed('right'):
+		velocity.y += 1
+		velocity.x += 1
+		player_state = state.RIGHT
+	if Input.is_action_pressed('left'):
+		velocity.y -= 1
+		velocity.x -= 1
+		player_state = state.LEFT
+	if Input.is_action_pressed('left'):
+		velocity.y += 1
+		velocity.x -= 1
+		player_state = state.LEFT
+	
 	# Make sure diagonal movement isn't faster
 	velocity = velocity.normalized() * speed
 
 func _physics_process(delta):
 	get_input()
 	velocity = move_and_slide(velocity)
-	if velocity == Vector2.ZERO:
-		player_state = state.STRAIGHT
-	if Input.is_action_just_pressed("right"):
-		player_state = state.RIGHT
-	elif velocity.x != 0:
-		player_state = state.STRAIGHT
+	update_animation(player_state)
 	
 	#var dir = Input.get_action_strength("right") - Input.get_action_strength("left")
 	#if dir != 0:
