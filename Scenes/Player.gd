@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-export (int) var speed = 240
+export (int) var speed = 300
 
 var velocity = Vector2.ZERO
 
@@ -34,12 +34,6 @@ func update_animation(anim):
 func get_input():
 	velocity = Vector2.ZERO
 	player_state = state.STRAIGHT
-	if Input.is_action_pressed('right'):
-		velocity.x += 1
-		player_state = state.RIGHT
-	if Input.is_action_pressed('left'):
-		velocity.x -= 1
-		player_state = state.LEFT
 	if Input.is_action_pressed('down'):
 		velocity.y += 1
 		player_state = state.BACKWARDS
@@ -47,21 +41,27 @@ func get_input():
 		velocity.y -= 1
 		player_state = state.STRAIGHT
 	if Input.is_action_pressed('right'):
-		velocity.y -= 1
-		velocity.x += 1
-		player_state = state.RIGHT
-	if Input.is_action_pressed('right'):
-		velocity.y += 1
 		velocity.x += 1
 		player_state = state.RIGHT
 	if Input.is_action_pressed('left'):
-		velocity.y -= 1
 		velocity.x -= 1
 		player_state = state.LEFT
-	if Input.is_action_pressed('left'):
-		velocity.y += 1
-		velocity.x -= 1
-		player_state = state.LEFT
+#	if Input.is_action_pressed('right'):
+#		velocity.y -= 1
+#		velocity.x += 1
+#		player_state = state.RIGHT
+#	if Input.is_action_pressed('right'):
+#		velocity.y += 1
+#		velocity.x += 1
+#		player_state = state.RIGHT
+#	if Input.is_action_pressed('left'):
+#		velocity.y -= 1
+#		velocity.x -= 1
+#		player_state = state.LEFT
+#	if Input.is_action_pressed('left'):
+#		velocity.y += 1
+#		velocity.x -= 1
+#		player_state = state.LEFT
 	
 	# Make sure diagonal movement isn't faster
 	velocity = velocity.normalized() * speed
