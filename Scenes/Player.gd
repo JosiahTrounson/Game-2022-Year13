@@ -71,6 +71,8 @@ func _physics_process(delta):
 	velocity = move_and_slide(velocity)
 	update_animation(player_state)
 	
+	global_position.x=clamp(global_position.x,40,700)
+	global_position.y=clamp(global_position.y,40,560)
 	#var dir = Input.get_action_strength("right") - Input.get_action_strength("left")
 	#if dir != 0:
 		#velocity.x = move_toward(velocity.x, dir*speed, acceleration)
