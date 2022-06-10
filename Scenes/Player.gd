@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+export (PackedScene) var PlayerBullet
+
 export (int) var speed = 300
 
 var velocity = Vector2.ZERO
@@ -73,6 +75,17 @@ func _physics_process(delta):
 	
 	global_position.x=clamp(global_position.x,40,700)
 	global_position.y=clamp(global_position.y,40,560)
+	
+func _unhandled_input(event):
+	if event.is_action_pressed("shoot"):
+		shoot()
+
+
+func shoot():
+	var bullet_instance = PlayerBullet.instance()
+	add_child(bullet_instance)
+	print("Shot!")
+
 	#var dir = Input.get_action_strength("right") - Input.get_action_strength("left")
 	#if dir != 0:
 		#velocity.x = move_toward(velocity.x, dir*speed, acceleration)
