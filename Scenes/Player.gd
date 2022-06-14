@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-export (PackedScene) var PlayerBullet
+export (PackedScene) var Bullet
 
 export (int) var speed = 300
 
@@ -13,6 +13,9 @@ enum state {IDLE, STRAIGHT, BACKWARDS, EXPLOSION, LEFT, RIGHT}
 onready var player_state = state.STRAIGHT
 
 onready var anim_tree = $AnimationTree.get("parameters/playback")
+
+onready var end_of_gun = $EndOfGun
+onready var end_of_gun2 = $EndOfGun2
 
 func _ready():
 	anim_tree.travel("Straight")
@@ -82,9 +85,14 @@ func _unhandled_input(event):
 
 
 func shoot():
-	var bullet_instance = PlayerBullet.instance()
+	var bullet_instance = Bullet.instance()
 	add_child(bullet_instance)
+	bullet_instance.global_position = end_of_gun.global_position
+	bullet_instance = Bullet.instance()
+	add_child(bullet_instance)
+	bullet_instance.global_position = end_of_gun2.global_position
 	print("Shot!")
+	
 
 	#var dir = Input.get_action_strength("right") - Input.get_action_strength("left")
 	#if dir != 0:

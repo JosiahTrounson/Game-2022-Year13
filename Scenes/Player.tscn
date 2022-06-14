@@ -152,6 +152,7 @@ start_node = "Straight"
 [sub_resource type="AnimationNodeStateMachinePlayback" id=21]
 
 [node name="Player" type="KinematicBody2D"]
+position = Vector2( 518, 309 )
 scale = Vector2( 2, 2 )
 script = ExtResource( 2 )
 
@@ -177,3 +178,9 @@ tree_root = SubResource( 20 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource( 21 )
+
+[node name="EndOfGun" type="Position2D" parent="."]
+position = Vector2( -9.5, -16.5 )
+
+[node name="EndOfGun2" type="Position2D" parent="."]
+position = Vector2( 10.5, -16.5 )

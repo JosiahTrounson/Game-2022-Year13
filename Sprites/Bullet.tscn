@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Godot/Game/Game-2022-Year13/Assets/Player Bullet.png" type="Texture" id=1]
+[ext_resource path="res://Godot/Game/Game-2022-Year13/Sprites/Bullet.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 2.5, 6 )
@@ -39,6 +40,8 @@ tracks/0/keys = {
 
 [node name="Bullet" type="Area2D"]
 scale = Vector2( 0.75, 0.75 )
+script = ExtResource( 2 )
+speed = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -0.5, -1 )
