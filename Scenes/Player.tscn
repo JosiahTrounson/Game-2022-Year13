@@ -182,7 +182,9 @@ active = true
 parameters/playback = SubResource( 21 )
 
 [node name="EndOfGun" type="Position2D" parent="."]
-position = Vector2( -9.5, -16.5 )
+position = Vector2( -9.5, -14.5 )
 
 [node name="EndOfGun2" type="Position2D" parent="."]
-position = Vector2( 10.5, -16.5 )
+position = Vector2( 10.5, -14.5 )
+
+[node name="AttackCooldown" type="Timer" parent="."]

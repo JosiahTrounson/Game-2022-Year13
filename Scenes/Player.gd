@@ -1,7 +1,8 @@
 extends KinematicBody2D
 
-export (PackedScene) var Bullet
+signal player_fired_bullet
 
+export (PackedScene) var Bullet
 export (int) var speed = 300
 
 var velocity = Vector2.ZERO
@@ -16,6 +17,8 @@ onready var anim_tree = $AnimationTree.get("parameters/playback")
 
 onready var end_of_gun = $EndOfGun
 onready var end_of_gun2 = $EndOfGun2
+onready var attack_cooldown = $AttackCooldown
+
 
 func _ready():
 	anim_tree.travel("Straight")
@@ -85,19 +88,26 @@ func _unhandled_input(event):
 
 
 func shoot():
-	var bullet_instance = Bullet.instance()
-	get_parent().add_child(bullet_instance)
-	bullet_instance.global_position = end_of_gun.global_position
-	bullet_instance.set_direction(Vector2.UP)
+	if attack_cooldown.is_stopped():
+		var bullet_instance = Bullet.instance()
+		get_parent().add_child(bullet_instance)
+		bullet_instance.global_position = end_of_gun.global_position
+		bullet_instance.set_direction(Vector2.UP)
 	
-	bullet_instance = Bullet.instance()
-	get_parent().add_child(bullet_instance)
-	bullet_instance.global_position = end_of_gun2.global_position
-	bullet_instance.set_direction(Vector2.UP)
+		bullet_instance = Bullet.instance()
+		get_parent().add_child(bullet_instance)
+		bullet_instance.global_position = end_of_gun2.global_position
+		bullet_instance.set_direction(Vector2.UP)
+		emit_signal("player_fired_bullet", bullet_instance)
+		print("Shot!")
+	else:
+		pass
+	
+	
 	#var target = get_global_mouse_position()
 	#var direction_to_mouse = bullet_instance.global_position.direction_to(target).normalized()
 	#bullet_instance.set_direction(direction_to_mouse)
-	print("Shot!")
+		
 	
 
 	#var dir = Input.get_action_strength("right") - Input.get_action_strength("left")

@@ -1,10 +1,17 @@
 extends Area2D
-
+class_name Bullet
 
 export (int) var speed = 10
 
 
+onready var kill_timer = $KillTimer
+
+
 var direction := Vector2.ZERO
+
+
+func _ready():
+	kill_timer.start()
 
 
 func _physics_process(delta: float):
@@ -20,3 +27,7 @@ func set_direction(direction: Vector2):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func _on_KillTimer_timeout():
+	queue_free()
