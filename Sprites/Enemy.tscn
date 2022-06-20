@@ -4,7 +4,7 @@
 [ext_resource path="res://Godot/Game/Game-2022-Year13/Sprites/Enemy.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 10, 14.5 )
+extents = Vector2( 11, 15 )
 
 [sub_resource type="Animation" id=5]
 resource_name = "Explosion"
@@ -78,7 +78,6 @@ script = ExtResource( 2 )
 [node name="Tank" type="KinematicBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Tank"]
-position = Vector2( 0, 0.5 )
 shape = SubResource( 1 )
 
 [node name="Tank" type="Sprite" parent="Tank"]

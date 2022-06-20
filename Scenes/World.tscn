@@ -69,10 +69,10 @@ scale = Vector2( 2.25, 2.25 )
 parameters/playback = SubResource( 4 )
 
 [node name="EndOfGun" parent="Player" index="4"]
-position = Vector2( -9.55556, -14.4444 )
+position = Vector2( -9.55556, -18.8889 )
 
 [node name="EndOfGun2" parent="Player" index="5"]
-position = Vector2( 10.4444, -14.4444 )
+position = Vector2( 10.4444, -18.8889 )
 
 [node name="TileMap" type="TileMap" parent="."]
 show_behind_parent = true
@@ -106,6 +106,7 @@ color = Color( 0, 0, 0, 1 )
 [node name="Enemy" parent="." instance=ExtResource( 3 )]
 
 [node name="Tank" parent="Enemy" index="0"]
+position = Vector2( 237, 83 )
 scale = Vector2( 2, 2 )
 
 [node name="BulletManager" type="Node2D" parent="."]

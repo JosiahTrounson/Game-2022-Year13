@@ -7,6 +7,8 @@ export (int) var speed = 300
 
 var velocity = Vector2.ZERO
 
+var health: int = 100
+
 export (float) var acceleration = 75
 
 enum state {IDLE, STRAIGHT, BACKWARDS, EXPLOSION, LEFT, RIGHT}
@@ -103,7 +105,9 @@ func shoot():
 	else:
 		pass
 	
-	
+func handle_hit():
+	health -= 20
+	print("player hit! ", health)
 	#var target = get_global_mouse_position()
 	#var direction_to_mouse = bullet_instance.global_position.direction_to(target).normalized()
 	#bullet_instance.set_direction(direction_to_mouse)
