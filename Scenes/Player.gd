@@ -95,6 +95,7 @@ func shoot():
 		get_parent().add_child(bullet_instance)
 		bullet_instance.global_position = end_of_gun.global_position
 		bullet_instance.set_direction(Vector2.UP)
+		attack_cooldown.start()
 	
 		bullet_instance = Bullet.instance()
 		get_parent().add_child(bullet_instance)
