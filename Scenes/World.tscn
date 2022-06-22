@@ -68,16 +68,6 @@ scale = Vector2( 2.25, 2.25 )
 [node name="AnimationTree" parent="Player" index="3"]
 parameters/playback = SubResource( 4 )
 
-[node name="EndOfGun" parent="Player" index="4"]
-position = Vector2( -9.55556, -18.8889 )
-
-[node name="EndOfGun2" parent="Player" index="5"]
-position = Vector2( 10.4444, -18.8889 )
-
-[node name="AttackCooldown" parent="Player" index="6"]
-wait_time = 0.25
-one_shot = true
-
 [node name="TileMap" type="TileMap" parent="."]
 show_behind_parent = true
 tile_set = SubResource( 2 )

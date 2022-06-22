@@ -1,8 +1,10 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Godot/Game/Game-2022-Year13/Sprites/Character Plane.png" type="Texture" id=1]
 [ext_resource path="res://Godot/Game/Game-2022-Year13/Scenes/Player.gd" type="Script" id=2]
 [ext_resource path="res://Godot/Game/Game-2022-Year13/Sprites/Bullet.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Godot/Game/Game-2022-Year13/Scenes/Health.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Godot/Game/Game-2022-Year13/Scenes/Weapon.gd" type="Script" id=5]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 17.0
@@ -181,10 +183,15 @@ anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource( 21 )
 
-[node name="EndOfGun" type="Position2D" parent="."]
-position = Vector2( -9.5, -14.5 )
+[node name="Health" parent="." instance=ExtResource( 4 )]
 
-[node name="EndOfGun2" type="Position2D" parent="."]
-position = Vector2( 10.5, -14.5 )
+[node name="Weapon" type="Node2D" parent="."]
+script = ExtResource( 5 )
 
-[node name="AttackCooldown" type="Timer" parent="."]
+[node name="EndOfGun" type="Position2D" parent="Weapon"]
+position = Vector2( -8, -14.5 )
+
+[node name="EndOfGun2" type="Position2D" parent="Weapon"]
+position = Vector2( 9, -14.5 )
+
+[node name="AttackCooldown" type="Timer" parent="Weapon"]

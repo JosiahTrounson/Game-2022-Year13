@@ -3,8 +3,12 @@ class_name Bullet
 
 export (int) var speed = 10
 
+enum state {FIRE}
+
+onready var player_state = state.FIRE
 
 onready var kill_timer = $KillTimer
+
 
 
 var direction := Vector2.ZERO
@@ -12,6 +16,7 @@ var direction := Vector2.ZERO
 
 func _ready():
 	kill_timer.start()
+	
 
 
 func _physics_process(delta: float):

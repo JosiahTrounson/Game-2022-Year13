@@ -7,7 +7,6 @@ export (int) var speed = 300
 
 var velocity = Vector2.ZERO
 
-var health: int = 100
 
 export (float) var acceleration = 75
 
@@ -17,12 +16,12 @@ onready var player_state = state.STRAIGHT
 
 onready var anim_tree = $AnimationTree.get("parameters/playback")
 
-onready var end_of_gun = $EndOfGun
-onready var end_of_gun2 = $EndOfGun2
-onready var attack_cooldown = $AttackCooldown
+onready var weapon = $Weapon
+onready var health_stat = $Health
 
 
 func _ready():
+	weapon.connect("weapon_fired", self, "shoot")
 	anim_tree.travel("Straight")
 	pass 
 
@@ -89,26 +88,13 @@ func _unhandled_input(event):
 		shoot()
 
 
-func shoot():
-	if attack_cooldown.is_stopped():
-		var bullet_instance = Bullet.instance()
-		get_parent().add_child(bullet_instance)
-		bullet_instance.global_position = end_of_gun.global_position
-		bullet_instance.set_direction(Vector2.UP)
-		attack_cooldown.start()
-	
-		bullet_instance = Bullet.instance()
-		get_parent().add_child(bullet_instance)
-		bullet_instance.global_position = end_of_gun2.global_position
-		bullet_instance.set_direction(Vector2.UP)
-		emit_signal("player_fired_bullet", bullet_instance)
-		print("Shot!")
-	else:
-		pass
+func shoot(bullet_instance, location: Vector2, direction: Vector2):
+	emit_signal("player_fired_bullet", bullet_instance, location, direction)
+	pass
 	
 func handle_hit():
-	health -= 20
-	print("player hit! ", health)
+	health_stat.health -= 20
+	print("player hit! ", health_stat.health)
 	#var target = get_global_mouse_position()
 	#var direction_to_mouse = bullet_instance.global_position.direction_to(target).normalized()
 	#bullet_instance.set_direction(direction_to_mouse)
