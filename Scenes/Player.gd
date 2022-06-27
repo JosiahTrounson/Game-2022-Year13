@@ -85,7 +85,7 @@ func _physics_process(delta):
 	
 func _unhandled_input(event):
 	if event.is_action_pressed("shoot"):
-		shoot()
+		weapon.shoot()
 
 
 func shoot(bullet_instance, location: Vector2, direction: Vector2):
