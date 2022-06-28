@@ -186,3 +186,7 @@ parameters/playback = SubResource( 21 )
 [node name="Health" parent="." instance=ExtResource( 4 )]
 
 [node name="Weapon" parent="." instance=ExtResource( 5 )]
+
+[node name="AI" type="Node2D" parent="."]
+
+[connection signal="weapon_fired" from="Weapon" to="." method="_on_Weapon_weapon_fired"]

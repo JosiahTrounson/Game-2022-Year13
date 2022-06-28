@@ -83,13 +83,14 @@ func _physics_process(delta):
 	global_position.x=clamp(global_position.x,40,700)
 	global_position.y=clamp(global_position.y,40,560)
 	
-func _unhandled_input(event):
+func _input(event):
 	if event.is_action_pressed("shoot"):
-		weapon.shoot()
+		shoot()
 
 
-func shoot(bullet_instance, location: Vector2, direction: Vector2):
-	emit_signal("player_fired_bullet", bullet_instance, location, direction)
+func shoot():
+	weapon.shoot()
+	#emit_signal("player_fired_bullet", bullet_instance, location, direction)
 	pass
 	
 func handle_hit():
@@ -134,3 +135,7 @@ func handle_hit():
 #
 #	velocity = move_and_slide(velocity,)
 #
+
+
+func _on_Weapon_weapon_fired(bullet, location, direction):
+	print("shot!") # Replace with function body.
