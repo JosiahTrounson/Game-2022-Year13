@@ -101,7 +101,7 @@ color = Color( 0, 0, 0, 1 )
 script = ExtResource( 4 )
 
 [node name="Enemy1" parent="." instance=ExtResource( 3 )]
-position = Vector2( 388, 248 )
+position = Vector2( 424, 80 )
 scale = Vector2( 3, 3 )
 
 [editable path="Player"]
