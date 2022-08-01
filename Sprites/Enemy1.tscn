@@ -75,8 +75,9 @@ tracks/0/keys = {
 "values": [ 14 ]
 }
 
-[sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 228.5, 107.125 )
+[sub_resource type="CapsuleShape2D" id=6]
+radius = 185.0
+height = 0.0
 
 [node name="Enemy1" type="KinematicBody2D"]
 script = ExtResource( 2 )
@@ -92,11 +93,10 @@ vframes = 5
 frame = 14
 
 [node name="Turret" type="Sprite" parent="."]
-rotation = -0.0134071
 texture = ExtResource( 1 )
 hframes = 5
 vframes = 5
-frame = 2
+frame = 4
 script = ExtResource( 5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -114,5 +114,6 @@ script = ExtResource( 4 )
 [node name="PlayerDetectionZone" type="Area2D" parent="AI"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AI/PlayerDetectionZone"]
-position = Vector2( 0.5, 80.875 )
 shape = SubResource( 6 )
+
+[connection signal="body_entered" from="AI/PlayerDetectionZone" to="AI" method="_on_PlayerDetectionZone_body_entered"]
