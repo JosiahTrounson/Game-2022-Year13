@@ -6,6 +6,8 @@ export var rotation_speed = 0.25
 export var speed = 10
 var velocity = Vector2.ZERO
 export (bool) var random_movement = false
+
+
 func _ready():
 	
 	direction = (player.global_position - global_position).normalized()
@@ -39,3 +41,18 @@ func turn(player,delta):
 func _process(delta):
 	turn(player,delta)
 	#slow_rotate(rotation_speed * delta)
+
+
+func _on_PlayerDetectionZone_body_entered(body):
+	if body.is_in_group("Player"):
+		$Timer.start()
+
+
+func _on_PlayerDetectionZone_body_exited(body):
+	if body.is_in_group("Player"):
+		$Timer.stop()
+
+
+func _on_Timer_timeout():
+	#shoot code here
+	pass
