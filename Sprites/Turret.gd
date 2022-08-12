@@ -2,7 +2,7 @@ extends Sprite
 
 var direction = Vector2.ZERO
 onready var player = get_tree().get_nodes_in_group("Player")[0]
-export var rotation_speed = 0.25
+export var rotation_speed = 1
 export var speed = 10
 var velocity = Vector2.ZERO
 export (bool) var random_movement = false
