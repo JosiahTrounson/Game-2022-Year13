@@ -6,7 +6,7 @@ export var rotation_speed = 1
 export var speed = 10
 var velocity = Vector2.ZERO
 export (bool) var random_movement = false
-
+onready var ENEMY_BULLET
 
 func _ready():
 	
@@ -27,6 +27,17 @@ func turn(player,delta):
 		rotation += aim_speed  *delta
 	elif get_angle_to(target_direction)< deg2rad(-1):
 		rotation -= aim_speed *delta
+
+
+func fire():
+	var bullet = ENEMY_BULLET.instance()
+	bullet.position = get_global_position()
+	bullet.player = player
+	get_parent().add_child(bullet)
+	$Timer.set_wait_time(1)
+	
+func _on_Timer_timeout():
+	fire()
 
 #func turn(player):
 #	var global_pos = global_transform.origin
@@ -53,6 +64,6 @@ func _on_PlayerDetectionZone_body_exited(body):
 		$Timer.stop()
 
 
-func _on_Timer_timeout():
-	#shoot code here
-	pass
+#func _on_Timer_timeout():
+#	#shoot code here
+#	pass
