@@ -6,7 +6,7 @@ export var rotation_speed = 1
 export var speed = 10
 var velocity = Vector2.ZERO
 export (bool) var random_movement = false
-onready var ENEMY_BULLET
+onready var ENEMY_BULLET = preload("res://Godot/Game/Game-2022-Year13/Sprites/EnemyBullet.tscn")
 
 func _ready():
 	
@@ -37,7 +37,8 @@ func fire():
 	$Timer.set_wait_time(1)
 	
 func _on_Timer_timeout():
-	fire()
+	if player != null:
+		fire()
 
 #func turn(player):
 #	var global_pos = global_transform.origin
