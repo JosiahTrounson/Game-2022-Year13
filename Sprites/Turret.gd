@@ -8,6 +8,8 @@ var velocity = Vector2.ZERO
 export (bool) var random_movement = false
 onready var ENEMY_BULLET = preload("res://Godot/Game/Game-2022-Year13/Sprites/EnemyBullet.tscn")
 
+onready var end_of_turret = $EndOfTurret
+
 func _ready():
 	
 	direction = (player.global_position - global_position).normalized()
@@ -30,11 +32,12 @@ func turn(player,delta):
 
 
 func fire():
-	var bullet = ENEMY_BULLET.instance()
-	bullet.position = get_global_position()
-	bullet.player = player
-	get_parent().add_child(bullet)
+	var enemybullet_instance = ENEMY_BULLET.instance()
+	enemybullet_instance.position = get_global_position()
+	enemybullet_instance.player = player
+	get_parent().add_child(enemybullet_instance)
 	$Timer.set_wait_time(1)
+	enemybullet_instance.global_position = end_of_turret.global_position
 	
 func _on_Timer_timeout():
 	if player != null:

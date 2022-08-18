@@ -101,6 +101,9 @@ script = ExtResource( 5 )
 
 [node name="Timer" type="Timer" parent="Turret"]
 
+[node name="EndOfTurret" type="Position2D" parent="Turret"]
+position = Vector2( 24.5, 1 )
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Explosion = SubResource( 2 )
 anims/RESET = SubResource( 3 )
