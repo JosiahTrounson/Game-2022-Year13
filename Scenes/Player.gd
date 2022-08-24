@@ -19,6 +19,10 @@ onready var anim_tree = $AnimationTree.get("parameters/playback")
 onready var weapon = $Weapon
 onready var health_stat = $Health
 
+func player_hit():
+	health_stat.health -= 20
+	if health_stat.health <= 0:
+		queue_free()
 
 func _ready():
 	weapon.connect("weapon_fired", self, "shoot")
@@ -93,7 +97,7 @@ func shoot():
 	#emit_signal("player_fired_bullet", bullet_instance, location, direction)
 	pass
 	
-func handle_hit():
+func player_handle_hit():
 	health_stat.health -= 20
 	print("player hit! ", health_stat.health)
 	#var target = get_global_mouse_position()

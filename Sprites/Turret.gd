@@ -33,11 +33,13 @@ func turn(player,delta):
 
 func fire():
 	var enemybullet_instance = ENEMY_BULLET.instance()
-	enemybullet_instance.position = get_global_position()
 	enemybullet_instance.player = player
-	get_parent().add_child(enemybullet_instance)
+	get_node("/root/World").add_child(enemybullet_instance)
+	enemybullet_instance.position = get_global_position()
+
 	$Timer.set_wait_time(1)
 	enemybullet_instance.global_position = end_of_turret.global_position
+	enemybullet_instance.rotation_degrees = global_rotation_degrees
 	
 func _on_Timer_timeout():
 	if player != null:

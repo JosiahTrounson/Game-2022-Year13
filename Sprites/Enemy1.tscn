@@ -7,7 +7,7 @@
 [ext_resource path="res://Godot/Game/Game-2022-Year13/Sprites/Turret.gd" type="Script" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 11, 15 )
+extents = Vector2( 15, 11 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "Explosion"

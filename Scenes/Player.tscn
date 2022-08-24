@@ -184,6 +184,7 @@ active = true
 parameters/playback = SubResource( 21 )
 
 [node name="Health" parent="." instance=ExtResource( 4 )]
+health = 20
 
 [node name="Weapon" parent="." instance=ExtResource( 5 )]
 
