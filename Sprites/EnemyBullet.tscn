@@ -26,4 +26,5 @@ shape = SubResource( 1 )
 
 [node name="PlayerKillTimer" type="Timer" parent="."]
 
+[connection signal="body_entered" from="." to="." method="_on_EnemyBullet_body_entered"]
 [connection signal="timeout" from="PlayerKillTimer" to="." method="_on_PlayerKillTimer_timeout"]

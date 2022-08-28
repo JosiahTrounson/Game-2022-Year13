@@ -23,11 +23,18 @@ func _physics_process(delta):
 #		body.queue_free()
 #	queue_free()
 
-func _on_Bullet_body_entered(body: Node):
-	if body.has_method("player_hit"):
-		body.player_hit()
-		queue_free()
-		
+#func _on_Bullet_body_entered(body: Node):
+#	if body.has_method("player_hit"):
+#		body.player_hit()
+#		queue_free()
+#
 		
 func _on_PlayerKillTimer_timeout():
 	queue_free()
+
+
+func _on_EnemyBullet_body_entered(body: Node):
+	if body.has_method("player_hit"):
+		body.player_hit()
+		queue_free()
+	
