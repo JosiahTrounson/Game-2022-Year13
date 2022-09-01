@@ -7,7 +7,7 @@ export (int) var speed = 300
 
 var velocity = Vector2.ZERO
 
-
+var health = 100
 export (float) var acceleration = 75
 
 enum state {IDLE, STRAIGHT, BACKWARDS, EXPLOSION, LEFT, RIGHT}
@@ -20,9 +20,12 @@ onready var weapon = $Weapon
 onready var health_stat = $Health
 
 func player_hit():
-	health_stat.health -= 20
-	if health_stat.health <= 0:
-		queue_free()
+	health -= 20
+	print(health)
+	#health_stat.health -= 20
+#	if health <=0 :#_stat.health <= 0:
+		
+#		queue_free()
 
 func _ready():
 	weapon.connect("weapon_fired", self, "shoot")

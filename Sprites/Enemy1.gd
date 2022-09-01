@@ -21,6 +21,7 @@ func _ready():
 	direction = (player.global_position - global_position).normalized()
 
 func slow_rotate(rotate_speed):
+
 	direction = (player.global_position - global_position).normalized()
 	global_rotation = lerp_angle(global_rotation, direction.angle(), rotate_speed )
 	move_and_slide(transform.x * speed,Vector2.ZERO)

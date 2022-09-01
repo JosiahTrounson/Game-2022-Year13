@@ -35,6 +35,7 @@ func _on_PlayerKillTimer_timeout():
 
 func _on_EnemyBullet_body_entered(body: Node):
 	if body.has_method("player_hit"):
+	
 		body.player_hit()
 		queue_free()
 	

@@ -24,7 +24,7 @@ func turn(player,delta):
 
 	var target_direction = player.global_position
 	var aim_speed = deg2rad(45)
-	print(get_angle_to(target_direction))
+	#print(get_angle_to(target_direction))
 	if get_angle_to(target_direction) > deg2rad(1):
 		rotation += aim_speed  *delta
 	elif get_angle_to(target_direction)< deg2rad(-1):
