@@ -113,5 +113,7 @@ position = Vector2( 271, 77 )
 position = Vector2( 382, 516 )
 
 [node name="Enemy2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 169, 145 )
+scale = Vector2( 3, 3 )
 
 [editable path="Player"]
