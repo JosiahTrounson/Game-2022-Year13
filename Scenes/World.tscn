@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Godot/Game/Game-2022-Year13/Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Godot/Game/Game-2022-Year13/Assets/TileCraftGroundSetVersion2.png" type="Texture" id=2]
 [ext_resource path="res://Godot/Game/Game-2022-Year13/Sprites/Enemy1.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Godot/Game/Game-2022-Year13/Scenes/BulletManager.gd" type="Script" id=4]
 [ext_resource path="res://Godot/Game/Game-2022-Year13/Scenes/World.gd" type="Script" id=5]
-[ext_resource path="res://Godot/Game/Game-2022-Year13/Scenes/Curving Enemy.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Godot/Game/Game-2022-Year13/Scripts/SavePoint.tscn" type="PackedScene" id=7]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=4]
@@ -105,9 +104,6 @@ script = ExtResource( 4 )
 [node name="Enemy1" parent="." groups=["enemy"] instance=ExtResource( 3 )]
 position = Vector2( 424, 80 )
 scale = Vector2( 3, 3 )
-
-[node name="Curving Enemy" parent="." instance=ExtResource( 6 )]
-position = Vector2( 271, 77 )
 
 [node name="SavePoint" parent="." instance=ExtResource( 7 )]
 position = Vector2( 382, 516 )
