@@ -1,10 +1,13 @@
 extends KinematicBody2D
 
 onready var health_stat = $Health
+enum state {Explosion}
 
+			
 func handle_hit():
 	health_stat.health -= 20
 	if health_stat.health <= 0:
+#		yield($CollisionShape2D/AnimatedSprite,"animation_explosion")
 		queue_free()
 
 #func _ready():

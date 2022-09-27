@@ -7,7 +7,9 @@ export (int) var speed = 300
 
 var velocity = Vector2.ZERO
 
-var health = 100
+var health = 80
+var isLive=true
+
 export (float) var acceleration = 75
 
 enum state {IDLE, STRAIGHT, BACKWARDS, EXPLOSION, LEFT, RIGHT}
@@ -22,6 +24,9 @@ onready var health_stat = $Health
 func player_hit():
 	health -= 20
 	print(health)
+	if !isLive:
+		return
+		
 	#health_stat.health -= 20
 #	if health <=0 :#_stat.health <= 0:
 		
@@ -103,6 +108,10 @@ func shoot():
 func player_handle_hit():
 	health_stat.health -= 20
 	print("player hit! ", health_stat.health)
+	if health == 60:
+		isLive=false
+		update_animation(anim):
+			player_state = state.EXPLOSION
 	#var target = get_global_mouse_position()
 	#var direction_to_mouse = bullet_instance.global_position.direction_to(target).normalized()
 	#bullet_instance.set_direction(direction_to_mouse)
