@@ -7,7 +7,7 @@ export (int) var speed = 300
 
 var velocity = Vector2.ZERO
 
-var health = 80
+var health = 100
 var isLive=true
 
 export (float) var acceleration = 75
@@ -88,6 +88,8 @@ func get_input():
 	velocity = velocity.normalized() * speed
 
 func _physics_process(delta):
+	if !isLive:
+		return
 	get_input()
 	velocity = move_and_slide(velocity)
 	update_animation(player_state)
@@ -110,8 +112,11 @@ func player_handle_hit():
 	print("player hit! ", health_stat.health)
 	if health == 60:
 		isLive=false
-		update_animation(anim):
-			player_state = state.EXPLOSION
+		anim_tree.travel("Explosion")
+		yield($AnimationPlayer,"animation_finished")
+		anim_tree.travel("Straight")
+		global_position = Vector2(0,0)
+		isLive = true
 	#var target = get_global_mouse_position()
 	#var direction_to_mouse = bullet_instance.global_position.direction_to(target).normalized()
 	#bullet_instance.set_direction(direction_to_mouse)

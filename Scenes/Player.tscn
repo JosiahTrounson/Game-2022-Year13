@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Godot/Game/Game-2022-Year13/Sprites/Character Plane.png" type="Texture" id=1]
 [ext_resource path="res://Godot/Game/Game-2022-Year13/Scenes/Player.gd" type="Script" id=2]
@@ -138,6 +138,9 @@ animation = "Straight"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=19]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+switch_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id=20]
 states/Backwards/node = SubResource( 8 )
 states/Backwards/position = Vector2( 525, 403 )
@@ -149,7 +152,7 @@ states/Right/node = SubResource( 11 )
 states/Right/position = Vector2( 753, 277 )
 states/Straight/node = SubResource( 12 )
 states/Straight/position = Vector2( 525, 277 )
-transitions = [ "Straight", "Backwards", SubResource( 13 ), "Backwards", "Straight", SubResource( 14 ), "Straight", "Left", SubResource( 15 ), "Straight", "Right", SubResource( 16 ), "Left", "Straight", SubResource( 17 ), "Right", "Straight", SubResource( 18 ), "Straight", "Explosion", SubResource( 19 ) ]
+transitions = [ "Straight", "Backwards", SubResource( 13 ), "Backwards", "Straight", SubResource( 14 ), "Straight", "Left", SubResource( 15 ), "Straight", "Right", SubResource( 16 ), "Left", "Straight", SubResource( 17 ), "Right", "Straight", SubResource( 18 ), "Straight", "Explosion", SubResource( 19 ), "Explosion", "Straight", SubResource( 22 ) ]
 start_node = "Straight"
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=21]
