@@ -9,6 +9,7 @@ var velocity = Vector2.ZERO
 
 var health = 100
 var isLive=true
+var lifeLevel = 3
 
 export (float) var acceleration = 75
 
@@ -109,6 +110,10 @@ func shoot():
 	
 func player_handle_hit():
 	health_stat.health -= 20
+	health -= 20
+	print(health)
+	if !isLive:
+		return
 	print("player hit! ", health_stat.health)
 	if health == 60:
 		isLive=false

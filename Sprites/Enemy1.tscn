@@ -110,6 +110,8 @@ anims/RESET = SubResource( 3 )
 anims/backwards = SubResource( 4 )
 anims/straight = SubResource( 5 )
 
+[node name="AnimationTree" type="AnimationTree" parent="."]
+
 [node name="Health" parent="." instance=ExtResource( 3 )]
 health = 60
 

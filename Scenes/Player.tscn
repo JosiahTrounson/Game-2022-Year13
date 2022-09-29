@@ -154,6 +154,7 @@ states/Straight/node = SubResource( 12 )
 states/Straight/position = Vector2( 525, 277 )
 transitions = [ "Straight", "Backwards", SubResource( 13 ), "Backwards", "Straight", SubResource( 14 ), "Straight", "Left", SubResource( 15 ), "Straight", "Right", SubResource( 16 ), "Left", "Straight", SubResource( 17 ), "Right", "Straight", SubResource( 18 ), "Straight", "Explosion", SubResource( 19 ), "Explosion", "Straight", SubResource( 22 ) ]
 start_node = "Straight"
+graph_offset = Vector2( 0, 196.021 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=21]
 

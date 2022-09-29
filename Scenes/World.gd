@@ -1,10 +1,13 @@
 extends Node2D
 
-
 onready var bullet_manager = $BulletManager
 onready var player = $BulletManager
 
 #func _enter_tree():
+#
+#	if(Globals.lifeLevel <= 0):
+#		get_tree().change_scene("res://Godot/Game/Game-2022-Year13/Scripts/SavePoint.tscn")
+#	$Player.PlayerLife=Globals.life
 #	if Checkpoint.LastPosition:
 #		$Player.global_position=Checkpoint.LastPosition
 

@@ -2,11 +2,14 @@ extends KinematicBody2D
 
 onready var health_stat = $Health
 enum state {Explosion}
-
+onready var anim_tree = $AnimationTree.get("parameters/playback")
 			
 func handle_hit():
 	health_stat.health -= 20
 	if health_stat.health <= 0:
+#		anim_tree.travel("Explosion")
+#		yield($AnimationPlayer,"animation_finished")
+		
 #		yield($CollisionShape2D/AnimatedSprite,"animation_explosion")
 		queue_free()
 
