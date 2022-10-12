@@ -109,24 +109,27 @@ func shoot():
 	pass
 	
 func player_handle_hit():
-	health_stat.health -= 20
-	health -= 20
+	LiveCounter.health -= 50
+	health_stat.health = LiveCounter.health
+	
 	print(health)
 	if !isLive:
 		return
 	print("player hit! ", health_stat.health)
-	if health == 60:
+	if health == 10:
 		isLive=false
 		anim_tree.travel("Explosion")
-		yield($AnimationPlayer,"animation_finished")
-		anim_tree.travel("Straight")
-		global_position = Vector2(0,0)
-		isLive = true
+
+		
 	#var target = get_global_mouse_position()
 	#var direction_to_mouse = bullet_instance.global_position.direction_to(target).normalized()
 	#bullet_instance.set_direction(direction_to_mouse)
 		
-	
+func reset():
+	LiveCounter.health = 100
+	anim_tree.travel("Straight")
+	global_position = Vector2(381,520)
+	isLive = true
 
 	#var dir = Input.get_action_strength("right") - Input.get_action_strength("left")
 	#if dir != 0:

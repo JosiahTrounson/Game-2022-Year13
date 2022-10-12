@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Godot/Game/Game-2022-Year13/Sprites/Character Plane.png" type="Texture" id=1]
+[ext_resource path="res://Godot/Game/Game-2022-Year13/Scenes/Lives.gd" type="Script" id=2]
+
+[node name="Lives" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Live1" type="Sprite" parent="."]
+position = Vector2( 958, 105 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 1 )
+hframes = 4
+vframes = 4
+
+[node name="Live2" type="Sprite" parent="."]
+position = Vector2( 882, 105 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 1 )
+hframes = 4
+vframes = 4
+
+[node name="Live3" type="Sprite" parent="."]
+position = Vector2( 806, 105 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 1 )
+hframes = 4
+vframes = 4

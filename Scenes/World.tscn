@@ -1,11 +1,13 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Godot/Game/Game-2022-Year13/Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Godot/Game/Game-2022-Year13/Assets/TileCraftGroundSetVersion2.png" type="Texture" id=2]
 [ext_resource path="res://Godot/Game/Game-2022-Year13/Sprites/Enemy1.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Godot/Game/Game-2022-Year13/Scenes/BulletManager.gd" type="Script" id=4]
 [ext_resource path="res://Godot/Game/Game-2022-Year13/Scenes/World.gd" type="Script" id=5]
+[ext_resource path="res://Godot/Game/Game-2022-Year13/Scenes/Lives.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Godot/Game/Game-2022-Year13/Scripts/SavePoint.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Godot/Game/Game-2022-Year13/Scenes/HealthBar.tscn" type="PackedScene" id=8]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=4]
 
@@ -111,5 +113,9 @@ position = Vector2( 382, 516 )
 [node name="Enemy2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 169, 145 )
 scale = Vector2( 3, 3 )
+
+[node name="Lives" parent="." instance=ExtResource( 6 )]
+
+[node name="HealthBar" parent="." instance=ExtResource( 8 )]
 
 [editable path="Player"]

@@ -42,6 +42,20 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 9, 10, 11, 12, 13, 14, 15 ]
 }
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "reset"
+} ]
+}
 
 [sub_resource type="Animation" id=4]
 resource_name = "Left"
@@ -154,7 +168,7 @@ states/Straight/node = SubResource( 12 )
 states/Straight/position = Vector2( 525, 277 )
 transitions = [ "Straight", "Backwards", SubResource( 13 ), "Backwards", "Straight", SubResource( 14 ), "Straight", "Left", SubResource( 15 ), "Straight", "Right", SubResource( 16 ), "Left", "Straight", SubResource( 17 ), "Right", "Straight", SubResource( 18 ), "Straight", "Explosion", SubResource( 19 ), "Explosion", "Straight", SubResource( 22 ) ]
 start_node = "Straight"
-graph_offset = Vector2( 0, 196.021 )
+graph_offset = Vector2( 320.133, 10.3232 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=21]
 

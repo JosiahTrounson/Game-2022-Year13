@@ -1,5 +1,6 @@
 extends Sprite
 
+var enemy_dead = false
 var direction = Vector2.ZERO
 onready var player = get_tree().get_nodes_in_group("Player")[0]
 export var rotation_speed = 1
@@ -42,7 +43,8 @@ func fire():
 	enemybullet_instance.rotation_degrees = global_rotation_degrees
 	
 func _on_Timer_timeout():
-	if player != null:
+#	if player != null:
+	if !enemy_dead:
 		fire()
 
 #func turn(player):
