@@ -116,9 +116,13 @@ func player_handle_hit():
 	if !isLive:
 		return
 	print("player hit! ", health_stat.health)
-	if health == 10:
+	if LiveCounter.health == 0 and isLive:
 		isLive=false
+	
 		anim_tree.travel("Explosion")
+		yield($AnimationPlayer,"animation_finished")
+		global_position = Vector2(381,520)
+
 
 		
 	#var target = get_global_mouse_position()
